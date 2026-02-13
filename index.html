@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Interactive Photo Gallery</title>
+
+<style>
+  body{
+    font-family: Arial;
+    text-align: center;
+  }
+
+  #image{
+    width: 500px;
+    height: 300px;
+    border: 3px solid black;
+    margin: 20px auto;
+    line-height: 300px;
+    background-size: cover;
+    background-position: center;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  img{
+    width:150px;
+    margin:10px;
+    border:2px solid black;
+  }
+</style>
+
+<script>
+function upDate(previewPic){
+  console.log("Mouse/Focus event triggered");
+
+  document.getElementById("image").style.backgroundImage =
+    "url('" + previewPic.src + "')";
+  document.getElementById("image").innerHTML = previewPic.alt;
+}
+
+function undo(){
+  console.log("Mouse leave / blur triggered");
+
+  document.getElementById("image").style.backgroundImage = "url('')";
+  document.getElementById("image").innerHTML = "Hover or focus on an image below";
+}
+
+/* onload function */
+function addTabFocus(){
+  console.log("Page loaded — tabindex added");
+
+  let images = document.querySelectorAll("img");
+
+  for(let i = 0; i < images.length; i++){
+    images[i].setAttribute("tabindex","0");
+  }
+}
+</script>
+</head>
+
+<body onload="addTabFocus()">
+
+<h1>Interactive Photo Gallery</h1>
+
+<div id="image">
+Hover or focus on an image below
+</div>
+
+<img src="https://picsum.photos/id/1015/300"
+     alt="Mountain landscape"
+     onmouseover="upDate(this)"
+     onmouseleave="undo()"
+     onfocus="upDate(this)"
+     onblur="undo()">
+
+<img src="https://picsum.photos/id/1025/300"
+     alt="Cute dog portrait"
+     onmouseover="upDate(this)"
+     onmouseleave="undo()"
+     onfocus="upDate(this)"
+     onblur="undo()">
+
+<img src="https://picsum.photos/id/1040/300"
+     alt="Ocean waves"
+     onmouseover="upDate(this)"
+     onmouseleave="undo()"
+     onfocus="upDate(this)"
+     onblur="undo()">
+
+<img src="https://picsum.photos/id/1069/300"
+     alt="Forest path"
+     onmouseover="upDate(this)"
+     onmouseleave="undo()"
+     onfocus="upDate(this)"
+     onblur="undo()">
+
+<img src="https://picsum.photos/id/1074/300"
+     alt="City skyline"
+     onmouseover="upDate(this)"
+     onmouseleave="undo()"
+     onfocus="upDate(this)"
+     onblur="undo()">
+
+<img src="https://picsum.photos/id/1084/300"
+     alt="Snowy mountain"
+     onmouseover="upDate(this)"
+     onmouseleave="undo()"
+     onfocus="upDate(this)"
+     onblur="undo()">
+
+</body>
+</html>
